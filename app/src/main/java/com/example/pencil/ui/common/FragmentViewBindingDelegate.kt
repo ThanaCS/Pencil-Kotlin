@@ -1,4 +1,4 @@
-package com.example.pencil.ui
+package com.example.pencil.ui.common
 
 
 import android.view.LayoutInflater

@@ -9,7 +9,7 @@ import androidx.core.content.res.ResourcesCompat
 class CanvasView(context: Context) : View(context) {
 
     private lateinit var extraCanvas: Canvas
-    lateinit var extraBitmap: Bitmap
+    private lateinit var extraBitmap: Bitmap
     private var path = Path()
 
     private var motionTouchEventX = 0f
@@ -19,7 +19,7 @@ class CanvasView(context: Context) : View(context) {
     private var currentY = 0f
 
 
-    private var paint = Paint()
+     var paint = Paint()
 
     init {
         paint = Paint().apply {
