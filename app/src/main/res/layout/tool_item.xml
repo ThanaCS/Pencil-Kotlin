@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/light_background"
     android:layout_margin="8dp"
+    android:backgroundTint="@color/light_background"
     android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,10 +17,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:src="@drawable/ic_brush"
+            app:layoutDescription="@string/close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

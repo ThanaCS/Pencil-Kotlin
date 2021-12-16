@@ -20,6 +20,12 @@ fun getToolList(context: Context) =
         Tool(
             5,
             false,
+            CategoryType.ERASE,
+            context.resources.getIcon(R.drawable.eraser)
+        ),
+        Tool(
+            5,
+            false,
             CategoryType.CLEAR,
             context.resources.getIcon(R.drawable.ic_rease_everything)
         ),

@@ -6,12 +6,12 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 
+
 class CanvasView(context: Context) : View(context) {
 
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
     private var path = Path()
-
     private var motionTouchEventX = 0f
     private var motionTouchEventY = 0f
 
@@ -19,7 +19,7 @@ class CanvasView(context: Context) : View(context) {
     private var currentY = 0f
 
 
-     var paint = Paint()
+    var paint = Paint()
 
     init {
         paint = Paint().apply {
@@ -42,6 +42,7 @@ class CanvasView(context: Context) : View(context) {
         extraCanvas = Canvas(extraBitmap)
 
     }
+
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -82,5 +83,14 @@ class CanvasView(context: Context) : View(context) {
         extraCanvas.drawColor(0, PorterDuff.Mode.CLEAR)
         path.reset()
         invalidate()
+    }
+
+    fun eraser() {
+        paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+    }
+
+    fun removeEraser() {
+        paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        paint.xfermode = null
     }
 }

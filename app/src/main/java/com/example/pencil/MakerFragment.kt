@@ -29,6 +29,7 @@ class MakerFragment : BaseFragment(R.layout.fragment_maker) {
     lateinit var canvas: CanvasView
     private lateinit var paint: Paint
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         canvas = CanvasView(requireContext())
@@ -93,26 +94,17 @@ class MakerFragment : BaseFragment(R.layout.fragment_maker) {
     fun onToolBarClicked(tool: Tool) {
         when (tool.type) {
             CategoryType.BRUSH -> {
-                binding.slider.visibility = View.VISIBLE
-                binding.cancel.visibility = View.VISIBLE
-
-                binding.slider.addOnChangeListener { _, value, _ ->
-                    paint.strokeWidth = value
-
-                }
-                binding.cancel.setOnClickListener {
-                    collapse(binding.slider, binding.cancel)
-                }
-
+                canvas.removeEraser()
+                sliderWidth()
             }
             CategoryType.COLOR -> {
-
+                canvas.removeEraser()
                 val colorPickerDialog = ColorPickerDialog.createColorPickerDialog(
                     requireContext(),
                     ColorPickerDialog.DARK_THEME
                 )
                 colorPickerDialog.show()
-                colorPickerDialog.setOnColorPickedListener { color, hex ->
+                colorPickerDialog.setOnColorPickedListener { _, hex ->
                     try {
                         paint.color = Color.parseColor(hex)
                     } catch (e: Exception) {
@@ -123,6 +115,7 @@ class MakerFragment : BaseFragment(R.layout.fragment_maker) {
                 }
             }
             CategoryType.TEXT -> {
+
             }
             CategoryType.BACKGROUND -> {
                 updateList(getBackgroundList(requireContext()))
@@ -131,12 +124,26 @@ class MakerFragment : BaseFragment(R.layout.fragment_maker) {
                 canvas.clearCanvasDrawing()
             }
             CategoryType.ERASE -> {
-
+                canvas.eraser()
+                sliderWidth()
             }
 
             else -> {
             }
         }
+    }
+
+    private fun sliderWidth() {
+        binding.slider.visibility = View.VISIBLE
+        binding.cancel.visibility = View.VISIBLE
+        binding.slider.addOnChangeListener { _, value, _ ->
+            paint.strokeWidth = value
+
+        }
+        binding.cancel.setOnClickListener {
+            collapse(binding.slider, binding.cancel)
+        }
+
     }
 
     private fun updateList(newList: MutableList<Tool>) {
