@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:src="@drawable/ic_brush"
-            app:layoutDescription="@string/close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
